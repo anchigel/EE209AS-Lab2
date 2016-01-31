@@ -97,6 +97,7 @@ void loop() {
 			client.print("Click <a href=\"/CCW2\">here</a> to turn servo ccw to 90 and back 45<br>");
             client.print("Click <a href=\"/CW2\">here</a> to turn servo cw to 0 and back 45<br>");
 			client.print("Click <a href=\"/SEQ1\">here</a> for sequence 1<br>");
+			client.print("Click <a href=\"/SEQ2\">here</a> for sequence 2<br>");
 
             // The HTTP response ends with another blank line:
             client.println();
@@ -230,6 +231,48 @@ void loop() {
 				}
 			}
 		}
+		if(currentLine.endsWith("GET /SEQ2")) {
+            for(int loops = 0; loops < 5; loops+=1)
+            {
+              //Center
+              myservo.write(90);
+              delay(500);
+  
+              //1 hit
+              myservo.write(180);
+              delay(250);
+              myservo.write(90);
+              delay(250);
+              
+              //2 hit
+              myservo.write(180);
+              delay(125);
+              myservo.write(90);
+              delay(125);
+              myservo.write(180);
+              delay(250);
+              myservo.write(90);
+              delay(250);
+              
+              //3 hit
+              myservo.write(0);
+              delay(125);
+              myservo.write(90);
+              delay(125);
+              myservo.write(180);
+              delay(125);
+              myservo.write(90);
+              delay(125);
+              myservo.write(180);
+              delay(125);
+              myservo.write(90);
+              delay(125);
+              
+              //1 hit
+              myservo.write(180);
+          }
+        }
+		
 		
       }
     }
