@@ -1,25 +1,18 @@
 /*
-  WiFi Web Server LED Blink
+  WiFi Web Server Servo Control
  
- A simple web server that lets you blink an LED via the web.
- This sketch will print the IP address of your WiFi Shield (once connected)
- to the Serial monitor. From there, you can open that address in a web browser
- to turn on and off the LED on pin 9.
- 
- If the IP address of your shield is yourAddress:
- http://yourAddress/H turns the LED on
- http://yourAddress/L turns it off
- 
- This example is written for a network using WPA encryption. For 
- WEP or WPA, change the Wifi.begin() call accordingly.
+ A simple web server that lets you control a servo via the web.
  
  Circuit:
  * WiFi shield attached
- * LED attached to pin 9
+ * Servo attached to pin 6
  
  created 25 Nov 2012
  by Tom Igoe
+ 
+ modified for EE209AS Lab 2 - Team Scarlett
  */
+ 
 #include <SPI.h>
 #include <WiFi.h>
 #include <Servo.h> 
@@ -39,7 +32,7 @@ int pos = 0;    // variable to store the servo position
 void setup() {
   Serial.begin(9600);      // initialize serial communication
   //pinMode(13, OUTPUT);      // set the LED pin mode
-  myservo.attach(6);  // attaches the servo on pin 9 to the servo object 
+  myservo.attach(6);  // attaches the servo on pin 6 to the servo object 
   
   // check for the presence of the shield:
   if (WiFi.status() == WL_NO_SHIELD) {
@@ -269,7 +262,7 @@ void loop() {
               delay(125);
               
               //1 hit
-              myservo.write(180);
+              myservo.write(160);
           }
         }
 		
